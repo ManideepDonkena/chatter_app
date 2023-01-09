@@ -38,17 +38,24 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Chat App'),
-          backgroundColor: Colors.black12,
+          title: Text('Chatter'),
+          backgroundColor: Color.fromARGB(255, 131, 128, 128),
         ),
-        backgroundColor: Colors.black26,
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
         body: Center(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Icon(
+            Icons.chat,
+            color: Colors.white,
+          ),
+          SizedBox(
+            width: 5,
+          ),
           Center(
               child: Text(
-            "Welcome " + uname + '!',
-            style: TextStyle(color: Colors.purple[300], fontSize: 20),
+            "HELLO!!! " + uname + '! welcome to chatterapp',
+            style: TextStyle(
+                color: Color.fromARGB(255, 255, 255, 255), fontSize: 20),
           )),
         ])),
         drawer: NavDrawer());

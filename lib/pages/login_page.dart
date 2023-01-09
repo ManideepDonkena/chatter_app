@@ -14,8 +14,8 @@ Widget _buildLogo() {
     padding: const EdgeInsets.only(top: 10),
     child: Image.asset(
       "images/forest.png",
-      height: 100,
-      width: 70,
+      width: 100,
+      height: 80,
     ),
   );
 }
