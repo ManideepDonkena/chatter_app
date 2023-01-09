@@ -4,16 +4,16 @@ import 'package:profanity_filter/profanity_filter.dart';
 
 import '../widgets/sidebar_widget.dart';
 
-class FootBall extends StatefulWidget {
+class Cricket extends StatefulWidget {
   String uname;
-  FootBall({required this.uname});
+  Cricket({required this.uname});
   @override
-  _FootBallState createState() => _FootBallState(uname: uname);
+  _CricketState createState() => _CricketState(uname: uname);
 }
 
-class _FootBallState extends State<FootBall> {
+class _CricketState extends State<Cricket> {
   String uname;
-  _FootBallState({required this.uname});
+  _CricketState({required this.uname});
   final fs = FirebaseFirestore.instance;
   final TextEditingController message = new TextEditingController();
   final filter = ProfanityFilter();
@@ -24,7 +24,7 @@ class _FootBallState extends State<FootBall> {
       drawer: NavDrawer(),
       backgroundColor: Color.fromARGB(255, 242, 186, 44),
       appBar: AppBar(
-        title: Text('FOOTBALL'),
+        title: Text('Cricket'),
         backgroundColor: Color.fromARGB(186, 242, 186, 44),
       ),
       body: SingleChildScrollView(
@@ -79,7 +79,7 @@ class _FootBallState extends State<FootBall> {
                       message.text = filter.censor(message.text);
                     }
                     if (message.text.isNotEmpty) {
-                      fs.collection('football').doc().set({
+                      fs.collection('cricket').doc().set({
                         'message': message.text.trim(),
                         'time': DateTime.now(),
                         'userName': uname,
@@ -115,7 +115,7 @@ class _FootBallState extends State<FootBall> {
 
   messages({required String uname}) {
     final Stream<QuerySnapshot> _messageStream = FirebaseFirestore.instance
-        .collection('football')
+        .collection('cricket')
         .orderBy('time')
         .snapshots();
     return StreamBuilder(
