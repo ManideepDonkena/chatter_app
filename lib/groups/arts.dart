@@ -23,10 +23,10 @@ class _ArtsState extends State<Arts> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavDrawer(),
-      backgroundColor: Colors.black12,
+      backgroundColor: Color.fromARGB(96, 194, 19, 19),
       appBar: AppBar(
         title: Text('Arts'),
-        backgroundColor: Colors.black12,
+        backgroundColor: Color.fromARGB(96, 194, 19, 19),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -41,6 +41,9 @@ class _ArtsState extends State<Arts> {
             ),
             Row(
               children: [
+                SizedBox(
+                  width: 15,
+                ),
                 Expanded(
                   child: TextFormField(
                     controller: message,
@@ -68,10 +71,12 @@ class _ArtsState extends State<Arts> {
                     },
                   ),
                 ),
-                IconButton(
+                SizedBox(
+                  width: 15,
+                ),
+                FloatingActionButton(
                   onPressed: () {
                     bool hasProfanity = filter.hasProfanity(message.text);
-                    print('The string has profanity: $hasProfanity');
                     if (hasProfanity == true) {
                       message.text = filter.censor(message.text);
                     }
@@ -84,17 +89,31 @@ class _ArtsState extends State<Arts> {
                       message.clear();
                     }
                   },
-                  icon: Icon(
-                    Icons.send_sharp,
-                    color: Colors.white70,
+                  backgroundColor: Colors.blue,
+                  child: Icon(
+                    Icons.send,
+                    color: Colors.white,
+                    size: 28,
                   ),
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
+                SizedBox(
+                  width: 5,
+                )
               ],
             ),
           ],
         ),
       ),
     );
+  }
+
+  bool colorset(uname, qs) {
+    if (uname == qs['userName']) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   messages({required String uname}) {
@@ -115,6 +134,7 @@ class _ArtsState extends State<Arts> {
         }
 
         return SingleChildScrollView(
+          reverse: true,
           child: ListView.builder(
             itemCount: snapshot.data!.docs.length,
             physics: ScrollPhysics(),
@@ -124,9 +144,9 @@ class _ArtsState extends State<Arts> {
               QueryDocumentSnapshot qs = snapshot.data!.docs[index];
               Timestamp t = qs['time'];
               DateTime d = t.toDate();
-              print(d.toString());
               return Padding(
-                padding: const EdgeInsets.only(top: 8, bottom: 8),
+                padding: const EdgeInsets.only(
+                    left: 14, right: 14, top: 10, bottom: 10),
                 child: Column(
                   crossAxisAlignment: uname == qs['userName']
                       ? CrossAxisAlignment.end
@@ -135,25 +155,28 @@ class _ArtsState extends State<Arts> {
                     SizedBox(
                       width: 300,
                       child: ListTile(
-                        tileColor: Colors.white70,
+                        tileColor: (colorset(uname, qs)
+                            ? Colors.grey.shade200
+                            : Color.fromARGB(201, 29, 91, 215)),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
-                            color: Colors.grey,
+                            color: (colorset(uname, qs)
+                                ? Colors.grey.shade200
+                                : Color.fromARGB(201, 29, 91, 215)),
                           ),
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         title: Text(
                           qs['userName'],
                           style: TextStyle(
                             fontSize: 15,
-                            color: Colors.purple,
+                            color: Color.fromARGB(255, 232, 175, 16),
                           ),
                         ),
                         subtitle: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width: 200,
                               child: Text(
                                 qs['message'],
                                 softWrap: true,

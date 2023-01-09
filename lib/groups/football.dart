@@ -22,10 +22,10 @@ class _FootBallState extends State<FootBall> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavDrawer(),
-      backgroundColor: Colors.black12,
+      backgroundColor: Color.fromARGB(255, 242, 186, 44),
       appBar: AppBar(
-        title: Text('Football'),
-        backgroundColor: Colors.black12,
+        title: Text('FOOTBALL'),
+        backgroundColor: Color.fromARGB(186, 242, 186, 44),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -40,6 +40,9 @@ class _FootBallState extends State<FootBall> {
             ),
             Row(
               children: [
+                SizedBox(
+                  width: 15,
+                ),
                 Expanded(
                   child: TextFormField(
                     controller: message,
@@ -65,10 +68,13 @@ class _FootBallState extends State<FootBall> {
                     },
                   ),
                 ),
-                IconButton(
+                SizedBox(
+                  width: 15,
+                ),
+                FloatingActionButton(
                   onPressed: () {
                     bool hasProfanity = filter.hasProfanity(message.text);
-                    print('The string has profanity: $hasProfanity');
+                    // print('The string has profanity: $hasProfanity');
                     if (hasProfanity == true) {
                       message.text = filter.censor(message.text);
                     }
@@ -82,10 +88,14 @@ class _FootBallState extends State<FootBall> {
                       message.clear();
                     }
                   },
-                  icon: Icon(
+                  child: Icon(
                     Icons.send_sharp,
                     color: Colors.white70,
                   ),
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                SizedBox(
+                  width: 5,
                 ),
               ],
             ),
@@ -93,6 +103,14 @@ class _FootBallState extends State<FootBall> {
         ),
       ),
     );
+  }
+
+  bool colorset(uname, qs) {
+    if (uname == qs['userName']) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   messages({required String uname}) {
@@ -113,16 +131,17 @@ class _FootBallState extends State<FootBall> {
         }
 
         return SingleChildScrollView(
+          reverse: true,
           child: ListView.builder(
             itemCount: snapshot.data!.docs.length,
-            physics: ScrollPhysics(),
+            physics: ClampingScrollPhysics(),
             shrinkWrap: true,
-            primary: true,
+            padding: EdgeInsets.only(top: 10, bottom: 10),
+            // primary: true,
             itemBuilder: (_, index) {
               QueryDocumentSnapshot qs = snapshot.data!.docs[index];
               Timestamp t = qs['time'];
               DateTime d = t.toDate();
-              print(d.toString());
               return Padding(
                 padding: const EdgeInsets.only(top: 8, bottom: 8),
                 child: Column(
@@ -133,10 +152,14 @@ class _FootBallState extends State<FootBall> {
                     SizedBox(
                       width: 300,
                       child: ListTile(
-                        tileColor: Colors.white70,
+                        tileColor: (colorset(uname, qs)
+                            ? Colors.grey.shade200
+                            : Color.fromARGB(201, 29, 91, 215)),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
-                            color: Colors.grey,
+                            color: (colorset(uname, qs)
+                                ? Colors.grey.shade200
+                                : Color.fromARGB(201, 29, 91, 215)),
                           ),
                           borderRadius: BorderRadius.circular(10),
                         ),

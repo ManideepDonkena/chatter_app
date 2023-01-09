@@ -23,10 +23,10 @@ class _musicState extends State<music> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavDrawer(),
-      backgroundColor: Colors.black12,
+      backgroundColor: Color.fromARGB(255, 61, 242, 44),
       appBar: AppBar(
-        title: Text('Music'),
-        backgroundColor: Colors.black12,
+        title: Text('MUSIC'),
+        backgroundColor: Color.fromARGB(222, 67, 242, 44),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -41,6 +41,9 @@ class _musicState extends State<music> {
             ),
             Row(
               children: [
+                SizedBox(
+                  width: 15,
+                ),
                 Expanded(
                   child: TextFormField(
                     controller: message,
@@ -66,10 +69,13 @@ class _musicState extends State<music> {
                     },
                   ),
                 ),
-                IconButton(
+                SizedBox(
+                  width: 15,
+                ),
+                FloatingActionButton(
                   onPressed: () {
                     bool hasProfanity = filter.hasProfanity(message.text);
-                    print('The string has profanity: $hasProfanity');
+                    // print('The string has profanity: $hasProfanity');
                     if (hasProfanity == true) {
                       message.text = filter.censor(message.text);
                     }
@@ -79,13 +85,18 @@ class _musicState extends State<music> {
                         'time': DateTime.now(),
                         'userName': uname,
                       });
+
                       message.clear();
                     }
                   },
-                  icon: Icon(
+                  child: Icon(
                     Icons.send_sharp,
                     color: Colors.white70,
                   ),
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                SizedBox(
+                  width: 5,
                 ),
               ],
             ),
@@ -93,6 +104,14 @@ class _musicState extends State<music> {
         ),
       ),
     );
+  }
+
+  bool colorset(uname, qs) {
+    if (uname == qs['userName']) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   messages({required String uname}) {
@@ -113,6 +132,7 @@ class _musicState extends State<music> {
         }
 
         return SingleChildScrollView(
+          reverse: true,
           child: ListView.builder(
             itemCount: snapshot.data!.docs.length,
             physics: ScrollPhysics(),
@@ -122,7 +142,6 @@ class _musicState extends State<music> {
               QueryDocumentSnapshot qs = snapshot.data!.docs[index];
               Timestamp t = qs['time'];
               DateTime d = t.toDate();
-              print(d.toString());
               return Padding(
                 padding: const EdgeInsets.only(top: 8, bottom: 8),
                 child: Column(
@@ -133,10 +152,14 @@ class _musicState extends State<music> {
                     SizedBox(
                       width: 300,
                       child: ListTile(
-                        tileColor: Colors.white70,
+                        tileColor: (colorset(uname, qs)
+                            ? Colors.grey.shade200
+                            : Color.fromARGB(201, 29, 91, 215)),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
-                            color: Colors.grey,
+                            color: (colorset(uname, qs)
+                                ? Colors.grey.shade200
+                                : Color.fromARGB(135, 0, 85, 255)),
                           ),
                           borderRadius: BorderRadius.circular(10),
                         ),

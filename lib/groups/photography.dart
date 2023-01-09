@@ -23,10 +23,10 @@ class _PhotographyState extends State<Photography> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavDrawer(),
-      backgroundColor: Colors.black12,
+      backgroundColor: Color.fromARGB(245, 44, 242, 176),
       appBar: AppBar(
-        title: Text('Photography'),
-        backgroundColor: Colors.black12,
+        title: Text('PHOTOGRAPHY'),
+        backgroundColor: Color.fromARGB(254, 44, 242, 176),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -41,6 +41,9 @@ class _PhotographyState extends State<Photography> {
             ),
             Row(
               children: [
+                SizedBox(
+                  width: 15,
+                ),
                 Expanded(
                   child: TextFormField(
                     controller: message,
@@ -66,10 +69,13 @@ class _PhotographyState extends State<Photography> {
                     },
                   ),
                 ),
-                IconButton(
+                SizedBox(
+                  width: 15,
+                ),
+                FloatingActionButton(
                   onPressed: () {
                     bool hasProfanity = filter.hasProfanity(message.text);
-                    print('The string has profanity: $hasProfanity');
+                    // print('The string has profanity: $hasProfanity');
                     if (hasProfanity == true) {
                       message.text = filter.censor(message.text);
                     }
@@ -79,13 +85,18 @@ class _PhotographyState extends State<Photography> {
                         'time': DateTime.now(),
                         'userName': uname,
                       });
+
                       message.clear();
                     }
                   },
-                  icon: Icon(
+                  child: Icon(
                     Icons.send_sharp,
                     color: Colors.white70,
                   ),
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                SizedBox(
+                  width: 5,
                 ),
               ],
             ),
@@ -93,6 +104,14 @@ class _PhotographyState extends State<Photography> {
         ),
       ),
     );
+  }
+
+  bool colorset(uname, qs) {
+    if (uname == qs['userName']) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   messages({required String uname}) {
@@ -113,6 +132,7 @@ class _PhotographyState extends State<Photography> {
         }
 
         return SingleChildScrollView(
+          reverse: true,
           child: ListView.builder(
             itemCount: snapshot.data!.docs.length,
             physics: ScrollPhysics(),
@@ -122,7 +142,6 @@ class _PhotographyState extends State<Photography> {
               QueryDocumentSnapshot qs = snapshot.data!.docs[index];
               Timestamp t = qs['time'];
               DateTime d = t.toDate();
-              print(d.toString());
               return Padding(
                 padding: const EdgeInsets.only(top: 8, bottom: 8),
                 child: Column(
@@ -133,10 +152,14 @@ class _PhotographyState extends State<Photography> {
                     SizedBox(
                       width: 300,
                       child: ListTile(
-                        tileColor: Colors.white70,
+                        tileColor: (colorset(uname, qs)
+                            ? Colors.grey.shade200
+                            : Color.fromARGB(201, 29, 91, 215)),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
-                            color: Colors.grey,
+                            color: (colorset(uname, qs)
+                                ? Colors.grey.shade200
+                                : Color.fromARGB(201, 29, 91, 215)),
                           ),
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -144,7 +167,7 @@ class _PhotographyState extends State<Photography> {
                           qs['userName'],
                           style: TextStyle(
                             fontSize: 15,
-                            color: Colors.purple,
+                            color: Color.fromARGB(255, 206, 19, 239),
                           ),
                         ),
                         subtitle: Row(
