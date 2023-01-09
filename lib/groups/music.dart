@@ -154,12 +154,12 @@ class _musicState extends State<music> {
                       child: ListTile(
                         tileColor: (colorset(uname, qs)
                             ? Colors.grey.shade200
-                            : Color.fromARGB(201, 29, 91, 215)),
+                            : Colors.lightBlueAccent),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
                             color: (colorset(uname, qs)
                                 ? Colors.grey.shade200
-                                : Color.fromARGB(135, 0, 85, 255)),
+                                : Colors.lightBlueAccent),
                           ),
                           borderRadius: BorderRadius.circular(10),
                         ),

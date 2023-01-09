@@ -52,9 +52,9 @@ class _NavDrawerState extends State<NavDrawer> {
                 ),
               ),
               decoration: BoxDecoration(
-                // color: Color.fromARGB(193, 255, 255, 255),
+                color: Color.fromARGB(193, 255, 255, 255),
                 image: DecorationImage(
-                  image: AssetImage('asset/images/forest.png'),
+                  image: AssetImage('images/forest.png'),
                   fit: BoxFit.fill,
                 ),
               ),

@@ -157,20 +157,20 @@ class _ArtsState extends State<Arts> {
                       child: ListTile(
                         tileColor: (colorset(uname, qs)
                             ? Colors.grey.shade200
-                            : Color.fromARGB(201, 29, 91, 215)),
+                            : Colors.lightBlueAccent),
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
                             color: (colorset(uname, qs)
                                 ? Colors.grey.shade200
-                                : Color.fromARGB(201, 29, 91, 215)),
+                                : Colors.lightBlueAccent),
                           ),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         title: Text(
                           qs['userName'],
                           style: TextStyle(
-                            fontSize: 15,
-                            color: Color.fromARGB(255, 232, 175, 16),
+                            fontSize: 14,
+                            color: Color.fromARGB(255, 0, 0, 0),
                           ),
                         ),
                         subtitle: Row(
@@ -182,14 +182,14 @@ class _ArtsState extends State<Arts> {
                                 softWrap: true,
                                 style: TextStyle(
                                   fontSize: 15,
-                                  color: Colors.black,
+                                  color: Color.fromARGB(255, 0, 0, 0),
                                 ),
                               ),
                             ),
                             Text(
                               d.hour.toString() + ":" + d.minute.toString(),
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 16),
+                                  TextStyle(color: Colors.black, fontSize: 12),
                             )
                           ],
                         ),

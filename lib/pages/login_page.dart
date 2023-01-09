@@ -9,6 +9,17 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+Widget _buildLogo() {
+  return Padding(
+    padding: const EdgeInsets.only(top: 10),
+    child: Image.asset(
+      "images/forest.png",
+      height: 100,
+      width: 70,
+    ),
+  );
+}
+
 class _LoginPageState extends State<LoginPage> {
   final unameController = TextEditingController();
 
@@ -27,16 +38,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Align(
               alignment: Alignment.center,
-              child: SizedBox(
-                height: 120,
-                width: 120,
-                child: DecoratedBox(
-                  decoration: new BoxDecoration(
-                    color: Colors.white30,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-              ),
+              child: SizedBox(height: 120, width: 120, child: _buildLogo()),
             ),
             SizedBox(
               height: 150,
@@ -56,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 50,
               decoration: new BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.yellow[50],
+                color: Colors.blueAccent,
               ),
               child: TextField(
                 controller: unameController,
@@ -87,14 +89,15 @@ class _LoginPageState extends State<LoginPage> {
               },
               //icon: Icon(Icons.login),
               child: Text(
-                'Continue',
-                style: TextStyle(color: Colors.white, fontSize: 20),
+                'Get Inside',
+                style: TextStyle(
+                    color: Color.fromARGB(255, 255, 255, 255), fontSize: 20),
               ),
               style: ElevatedButton.styleFrom(
                 minimumSize: Size.fromHeight(50),
-                backgroundColor: Colors.white38,
+                backgroundColor: Color.fromARGB(97, 2, 2, 2),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(20),
                 ),
               ),
             ),
