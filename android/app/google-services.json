@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1084733075471",
+    "project_id": "amiable-vent-364707",
+    "storage_bucket": "amiable-vent-364707.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084733075471:android:3896005662cf8b10e1337a",
+        "android_client_info": {
+          "package_name": "com.example.chatter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084733075471-fifpv31fstf74s4c478q3u49ug00tufl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdsU8cZiAg_FoW7I2XZggSSMFnYgJh74g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084733075471-fifpv31fstf74s4c478q3u49ug00tufl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
