@@ -8,8 +8,8 @@ import './pages/login_page.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-      //options: DefaultFirebaseOptions.currentPlatform,
-      );
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   SharedPreferences prefs = await SharedPreferences.getInstance();
   var uname = prefs.getString("userName");
   print(uname);
