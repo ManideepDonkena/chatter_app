@@ -1,16 +1,16 @@
 # chatter_app
 
 A new Flutter project.
+[website](https://coding-club-iitg.notion.site/coding-club-iitg/First-Steps-to-Flutter-App-Development-Course-a7d66dbfd31045d9ad02cb9dc190350e)
+# Week Flow
 
-## Getting Started
+week-1: Learning Dart basics and setting up Android Studio 
+week-2: Widgets, State management, Navigation
+week-3: Web API, Firebase for authentication
+week-4: Getting started with databases and Firestore
 
-This project is a starting point for a Flutter application.
+# Assignments 
+> Event Scheduler App
+> Movies App
+> Chat Rooms
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
