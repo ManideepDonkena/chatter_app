@@ -10,7 +10,7 @@ week-3: Web API, Firebase for authentication <br>
 week-4: Getting started with databases and Firestore <br>
 
 # Assignments 
-> **Event Scheduler App** - Implemented basic methods of state management and created stateful widgets, and Implemented Navigation concepts <br>
-> **Movies App** - used Web API of themoviesdb to obtain movies data and added Google authentication using Firebase <br>
-> **Chat Rooms** - used Firestore for creating NOSQL database and implemented CRUD operations to create chart rooms <br> 
+* **Event Scheduler App** - Implemented basic methods of state management and created stateful widgets, and Implemented Navigation concepts <br>
+* **Movies App** - used Web API of themoviesdb to obtain movies data and added Google authentication using Firebase <br>
+* **Chat Rooms** - used Firestore for creating NOSQL database and implemented CRUD operations to create chart rooms <br> 
 
